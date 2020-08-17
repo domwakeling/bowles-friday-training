@@ -48,12 +48,12 @@ handler.post(async (req, res) => {
       from: process.env.EMAIL_FROM,
       to: req.body.email,
       subject: 'Bowles Training - Reset your password',
-      text: `There has been a request to reset your password for the Bowles SRC Friday night booking app.\n\n
+      text: `There has been a request to reset your password for the Bowles SRC training booking app.\n\n
              Please go to ${process.env.WEB_URI}/forget-password/${token} to reset your password.\n\n
              If you did not request a password reset, please contact Dom Wakeling.`,
       html: `
         <div>
-          <p>There has been a request to reset your password for the Bowles SRC Friday night booking app.</p>
+          <p>There has been a request to reset your password for the Bowles SRC training booking app.</p>
           <p>Please follow <a href="${process.env.WEB_URI}/forget-password/${token}">this link</a> to reset your password.</p>
           <p>If you did not request a password reset, please contact Dom Wakeling.</p>
         </div>
