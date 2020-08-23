@@ -8,7 +8,7 @@ export const getFriday = () => {
   const date = new Date();
   // eslint-disable-next-line no-mixed-operators
   date.setDate(date.getDate() + (12 - date.getDay()) % 7);
-  const ds0 = (`0${date.getDate()}`).slice(-2) + (`0${date.getMonth()}`).slice(-2) + date.getFullYear();
+  const ds0 = (`0${date.getDate()}`).slice(-2) + (`0${date.getMonth() + 1}`).slice(-2) + date.getFullYear();
   let ds1 = date.toDateString().split(' ');
   ds1 = `${ds1[2]} ${ds1[1]} ${ds1[3]}`;
   return [ds0, ds1];
