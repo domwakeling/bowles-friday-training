@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { mutate } from 'swr';
 import { useCurrentUser } from '../lib/hooks';
 import Racer from '../components/racer';
 import Bookings, { getFriday } from '../components/bookings';
@@ -19,6 +20,8 @@ const IndexPage = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
+    // whatever happens, update the screen to reflect
+    mutate(`/api/booking/${ds}`);
     if (res.status === 200) {
       toast.notify('Changes confirmed', {
         type: 'success',

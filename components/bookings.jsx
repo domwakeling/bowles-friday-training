@@ -17,7 +17,8 @@ export const getFriday = () => {
 const Bookings = () => {
   const [user] = useCurrentUser();
   const ds = getFriday();
-  const { data, error } = useSWR(`/api/booking/${ds[0]}`, fetcher, { refreshInterval: 1000 });
+  // update every 60 seconds; also triggered by adding/removing a racer
+  const { data, error } = useSWR(`/api/booking/${ds[0]}`, fetcher, { refreshInterval: 60000 });
 
   if (error) return <div>failed to load</div>;
 
