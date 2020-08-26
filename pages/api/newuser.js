@@ -1,6 +1,5 @@
 import nextConnect from 'next-connect';
 import isEmail from 'validator/lib/isEmail';
-import normalizeEmail from 'validator/lib/normalizeEmail';
 import bcrypt from 'bcryptjs';
 import { nanoid } from 'nanoid';
 import middleware from '../../middlewares/middleware';
@@ -11,8 +10,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.post(async (req, res) => {
-  const { password, secret } = req.body;
-  const email = normalizeEmail(req.body.email);
+  const { email, password, secret } = req.body;
   if (!isEmail(email)) {
     res.status(400).send('The email you entered is invalid.');
     return;
