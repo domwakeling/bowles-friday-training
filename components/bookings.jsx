@@ -44,6 +44,20 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
+      {ds[0] === '18092020' ? (
+        <p className="alert-text">
+          The club fun-race for 11s-&amp;-Under (anyone born between 2009-2014 inclusive)
+          is being held this Friday, 18 September. Please only book in for racers in those
+          age groups. If you wish to race but bookings are full, please contact Nigel.
+        </p>
+      ) : ''}
+      {ds[0] === '25092020' ? (
+        <p className="alert-text">
+          The club fun-race for 14s-&amp;-Under or older (anyone born 2008 or earlier)
+          is being held this Friday, 25 September. Please only book in for racers in those
+          age groups. If you wish to race but bookings are full, please contact Nigel.
+        </p>
+      ) : ''}
       <br />
       <div className="racerlist">
         {
