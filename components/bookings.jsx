@@ -11,7 +11,9 @@ export const getFriday = () => {
   const ds0 = (`0${date.getDate()}`).slice(-2) + (`0${date.getMonth() + 1}`).slice(-2) + date.getFullYear();
   let ds1 = date.toDateString().split(' ');
   ds1 = `${ds1[2]} ${ds1[1]} ${ds1[3]}`;
-  return [ds0, ds1];
+  date.setDate(date.getDate() - 7);
+  const ds2 = (`0${date.getDate()}`).slice(-2) + (`0${date.getMonth() + 1}`).slice(-2) + date.getFullYear();
+  return [ds0, ds1, ds2];
 };
 
 const Bookings = () => {

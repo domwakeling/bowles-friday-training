@@ -11,9 +11,11 @@ const IndexPage = () => {
 
   async function handleRacerClick(id, name) {
     const ds = getFriday()[0]; // gets the 8-digit datestring for this Friday
+    const prev = getFriday()[2];
     const body = {
       id,
       name,
+      prev,
     };
     const res = await fetch(`/api/booking/${ds}`, {
       method: 'POST',
@@ -27,6 +29,12 @@ const IndexPage = () => {
         type: 'success',
         title: 'Success',
         duration: 1,
+      });
+    } else if (res.status === 409) {
+      toast.notify(`That racer trained last Friday.In order to ensure all members get a chance to
+          train, please wait until Monday before booking them in to this Friday's session.`, {
+        type: 'warn',
+        title: 'Warning',
       });
     } else {
       toast.notify('No places available', {
