@@ -41,7 +41,7 @@ handler.post(async (req, res) => {
       });
   }
 
-  // space and racer wasn't found
+  // no space and racer wasn't found
   if (racersCount >= 15 && !racerFound) {
     res.status(400);
     res.send('No places available');
