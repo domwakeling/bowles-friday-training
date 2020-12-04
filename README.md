@@ -12,3 +12,5 @@ Functionality:
 a user but **not** unique objectrs)
 * add/remove racers from the present week's booking (always shows "this Friday", so booking for the
 week opens on Saturday morning)
+
+Live database hosted on MongoDB Atlas.
