@@ -1,7 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
-// import { useCurrentUser } from '../lib/hooks';
-// import Racer from './racer';
+import { useCurrentUser } from '../lib/hooks';
+import Racer from './racer';
 import fetcher from '../lib/fetch';
 
 export const getFriday = () => {
@@ -17,7 +17,7 @@ export const getFriday = () => {
 };
 
 const Bookings = () => {
-  // const [user] = useCurrentUser();
+  const [user] = useCurrentUser();
   const ds = getFriday();
   // update every 60 seconds; also triggered by adding/removing a racer
   const { data, error } = useSWR(`/api/booking/${ds[0]}`, fetcher, { refreshInterval: 60000 });
@@ -38,7 +38,7 @@ const Bookings = () => {
     );
   }
 
-  // const idxs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const idxs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   return (
     <div>
       <h2>
@@ -46,9 +46,6 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      <p className="alert-text">
-        The centre is currently shut in accordance with Covid restrictions.
-      </p>
       {ds[0] === '18092020' ? (
         <p className="alert-text">
           The club fun-race for 11s-&amp;-Under (anyone born between 2009-2014 inclusive)
@@ -63,23 +60,32 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {/* <br />
-      <div className="racerlist">
-        {
-          idxs.map((i) => (
-            data && (data.length > i) ? (
-              <Racer
-                key={i}
-                tabNum={i}
-                name={data[i].name}
-                status={(user && data[i].userid === user._id) ? 'highlight' : 'normal'}
-              />
-            ) : (
-              <Racer key={i} name="free" status="unused" />
-            )
-          ))
-        }
-      </div> */}
+      {ds[0] === '26032021' ? (
+        <div className="alert-text">
+          <p>The centre is currently shut in accordance with Covid restrictions.</p>
+          <p>Bookings for Friday 2 April will open at midnight on Fri/Sat 26/27 March</p>
+        </div>
+      ) : (
+        <>
+          <br />
+          <div className="racerlist">
+            {
+              idxs.map((i) => (
+                data && (data.length > i) ? (
+                  <Racer
+                    key={i}
+                    tabNum={i}
+                    name={data[i].name}
+                    status={(user && data[i].userid === user._id) ? 'highlight' : 'normal'}
+                  />
+                ) : (
+                  <Racer key={i} name="free" status="unused" />
+                )
+              ))
+            }
+          </div>
+        </>
+      )}
     </div>
   );
 };

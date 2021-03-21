@@ -225,7 +225,7 @@ const Layout = ({ children }) => {
               color: white;
             }
           }
-          p.alert-text {
+          p.alert-text, div.alert-text {
             border: 2px solid #394C8F;
             border-radius: 0.25rem;
             padding: 0.5rem;
