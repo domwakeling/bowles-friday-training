@@ -26,7 +26,7 @@ const Racer = ({
             color: ${colors[status]};
             margin-bottom: 0.5rem;
             margin-right: 1.0rem;
-            min-width: 200px;
+            min-width: 220px;
           }
           .clickable {
             cursor: pointer;

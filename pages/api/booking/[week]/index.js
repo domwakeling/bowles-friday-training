@@ -42,7 +42,7 @@ handler.post(async (req, res) => {
   }
 
   // no space and racer wasn't found
-  if (racersCount >= 15 && !racerFound) {
+  if (racersCount >= 25 && !racerFound) {
     res.status(400);
     res.send('No places available');
     res.end();
@@ -51,7 +51,7 @@ handler.post(async (req, res) => {
   }
 
   // space and racer wasn't found
-  if (racersCount < 15 && !racerFound) {
+  if (racersCount < 25 && !racerFound) {
     // check if it's weekend  ...
     const today = new Date().getDay();
     if (today === 0 || today === 6) {
