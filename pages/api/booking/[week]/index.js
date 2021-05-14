@@ -30,6 +30,8 @@ handler.post(async (req, res) => {
   // eslint-disable-next-line max-len
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
+  const maxRacers = forFriday === '12052021' ? 40 : 25;
+
   // if no booking was found set one up; expire after 30 days (minmimse db size)
   if (!bookings) {
     await req.db
@@ -42,7 +44,7 @@ handler.post(async (req, res) => {
   }
 
   // no space and racer wasn't found
-  if (racersCount >= 25 && !racerFound) {
+  if (racersCount >= maxRacers && !racerFound) {
     res.status(400);
     res.send('No places available');
     res.end();
@@ -51,7 +53,7 @@ handler.post(async (req, res) => {
   }
 
   // space and racer wasn't found
-  if (racersCount < 25 && !racerFound) {
+  if (racersCount < maxRacers && !racerFound) {
     // check if it's weekend  ...
     const today = new Date().getDay();
     if (today === 0 || today === 6) {
