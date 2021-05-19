@@ -30,7 +30,7 @@ handler.post(async (req, res) => {
   // eslint-disable-next-line max-len
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
-  const maxRacers = forFriday === '12052021' ? 40 : 25;
+  const maxRacers = forFriday === '21052021' ? 40 : 25;
 
   // if no booking was found set one up; expire after 30 days (minmimse db size)
   if (!bookings) {
