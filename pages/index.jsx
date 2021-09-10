@@ -49,84 +49,95 @@ const IndexPage = () => {
       <h2>
         Friday Night Training
       </h2>
-      { user ? (
-        <>
-          {user.racers && user.racers.length > 0 ? (
-            <div>
-              <p>
-                There
-                {' '}
-                {user.racers.length === 1 ? 'is' : 'are'}
-                {' '}
-                {user.racers.length}
-                {' '}
-                {user.racers.length === 1 ? 'racer' : 'racers'}
-                {' '}
-                on your account. Do you want to
-                {' '}
-                <Link href="/addracer"><a>add another racer</a></Link>
-                ?
-              </p>
-              <div className="racerlist">
-                {
-                  user.racers.map((racer, idx) => (
-                    <Racer
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={idx}
-                      tabNum={idx}
-                      name={racer}
-                      status="normal"
-                      clickhandler={handleRacerClick}
-                      userid={user._id}
-                    />
-                  ))
-                }
-              </div>
-              <p>
-                Tap/click on a racer&apos;s name above to add or remove them from the training list.
-              </p>
-            </div>
-          ) : (
-            <p>
-              Please
-              {' '}
-              <Link href="/addracer"><a>add a racer</a></Link>
-              .
-            </p>
-          )}
-          <hr />
-          <Bookings />
-        </>
-      ) : (
-        <>
-          <p>
-            Please either
-            {' '}
-            <Link href="/login"><a>sign in</a></Link>
-            {' '}
-            or
-            {' '}
-            <Link href="/signup"><a>sign up</a></Link>
-            .
-          </p>
-          <br />
-          <h2>How it works</h2>
-          <ol className="number-circle-list number-circle-list--primary-color">
-            <li className="number-circle-list--list-item">Create an account</li>
-            <li className="number-circle-list--list-item">Add racers to your account</li>
-            <li className="number-circle-list--list-item">Add your racers to the booking list</li>
-          </ol>
-          <br />
-          <p>
-            Or you can
-            {' '}
-            <Link href="/forget-password"><a>reset your password</a></Link>
-            ?
-          </p>
-        </>
-      )}
+      <h4>
+        The booking system is down for maintenance.
+      </h4>
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <h2>
+  //       Friday Night Training
+  //     </h2>
+  //     { user ? (
+  //       <>
+  //         {user.racers && user.racers.length > 0 ? (
+  //           <div>
+  //             <p>
+  //               There
+  //               {' '}
+  //               {user.racers.length === 1 ? 'is' : 'are'}
+  //               {' '}
+  //               {user.racers.length}
+  //               {' '}
+  //               {user.racers.length === 1 ? 'racer' : 'racers'}
+  //               {' '}
+  //               on your account. Do you want to
+  //               {' '}
+  //               <Link href="/addracer"><a>add another racer</a></Link>
+  //               ?
+  //             </p>
+  //             <div className="racerlist">
+  //               {
+  //                 user.racers.map((racer, idx) => (
+  //                   <Racer
+  //                     // eslint-disable-next-line react/no-array-index-key
+  //                     key={idx}
+  //                     tabNum={idx}
+  //                     name={racer}
+  //                     status="normal"
+  //                     clickhandler={handleRacerClick}
+  //                     userid={user._id}
+  //                   />
+  //                 ))
+  //               }
+  //             </div>
+  //             <p>
+  //               Tap/click on a racer&apos;s name above to add or remove them from the training list.
+  //             </p>
+  //           </div>
+  //         ) : (
+  //           <p>
+  //             Please
+  //             {' '}
+  //             <Link href="/addracer"><a>add a racer</a></Link>
+  //             .
+  //           </p>
+  //         )}
+  //         <hr />
+  //         <Bookings />
+  //       </>
+  //     ) : (
+  //       <>
+  //         <p>
+  //           Please either
+  //           {' '}
+  //           <Link href="/login"><a>sign in</a></Link>
+  //           {' '}
+  //           or
+  //           {' '}
+  //           <Link href="/signup"><a>sign up</a></Link>
+  //           .
+  //         </p>
+  //         <br />
+  //         <h2>How it works</h2>
+  //         <ol className="number-circle-list number-circle-list--primary-color">
+  //           <li className="number-circle-list--list-item">Create an account</li>
+  //           <li className="number-circle-list--list-item">Add racers to your account</li>
+  //           <li className="number-circle-list--list-item">Add your racers to the booking list</li>
+  //         </ol>
+  //         <br />
+  //         <p>
+  //           Or you can
+  //           {' '}
+  //           <Link href="/forget-password"><a>reset your password</a></Link>
+  //           ?
+  //         </p>
+  //       </>
+  //     )}
+  //   </div>
+  // );
 };
 
 export default IndexPage;

@@ -256,7 +256,7 @@ const Layout = ({ children }) => {
             </a>
           </Link>
           <div>
-            {!user ? (
+            {/* {!user ? (
               <>
                 <Link href="/login">
                   <a>Sign in</a>
@@ -270,7 +270,7 @@ const Layout = ({ children }) => {
               <a tabIndex={0} role="button" onClick={handleLogout}>
                 Logout
               </a>
-            )}
+            )} */}
           </div>
         </nav>
       </header>
