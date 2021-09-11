@@ -17,7 +17,7 @@ handler.post(async (req, res) => {
   }
   await req.db
     .collection('users')
-    .updateOne({ _id: id }, { $addToSet: { racers: racer } });
+    .updateOne({ _id: id }, { $addToSet: { racers: { name: racer, club: 'Bowles' } } });
   res.end('ok');
 });
 

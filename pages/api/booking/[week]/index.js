@@ -18,7 +18,9 @@ handler.get(async (req, res) => {
 
 handler.post(async (req, res) => {
   const forFriday = req.query.week;
-  const { id, name, prev } = req.body;
+  const {
+    id, name, club,
+  } = req.body;
 
   const bookings = await req.db
     .collection('bookings')
@@ -48,7 +50,6 @@ handler.post(async (req, res) => {
     res.status(400);
     res.send('No places available');
     res.end();
-    // res.send("No places available")
     return;
   }
 
@@ -57,15 +58,22 @@ handler.post(async (req, res) => {
     // check if it's weekend  ...
     const today = new Date().getDay();
     if (today === 0 || today === 6) {
-      // look for previous week's booking
-      const prevWeek = await req.db.collection('bookings').findOne({
-        forWeek: prev,
-      });
-      // check there is an entry and find out if this racer was booked in
-      if (prevWeek
-        && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
-        res.status(409);
-        res.send('Racer booked previous week.');
+      // look for previous week's booking - ** NOT REQUIRED ANY MORE ON FRIDAYS
+      // const prevWeek = await req.db.collection('bookings').findOne({
+      //   forWeek: prev,
+      // });
+      // check there is an entry and find out if this racer was booked in - ** NOT REQUIRED FRIDAYS
+      // if (prevWeek
+      //   && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
+      //   res.status(409);
+      //   res.send('Racer booked previous week.');
+      //   res.end();
+      //   return;
+      // }
+      // check what club
+      if (club !== 'Bowles') {
+        res.status(412);
+        res.send('Racer represents another club.');
         res.end();
         return;
       }

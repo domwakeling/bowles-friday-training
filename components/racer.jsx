@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Racer = ({
-  name, status, clickhandler, userid, tabNum,
+  name, status, clickhandler, userid, tabNum, club,
 }) => {
   const colors = {
     normal: 'white',
@@ -42,7 +42,7 @@ const Racer = ({
             className="lozenge clickable"
             role="menuitem"
             tabIndex={tabNum}
-            onClick={() => clickhandler(userid, name)}
+            onClick={() => clickhandler(userid, name, club)}
           >
             {name}
           </div>

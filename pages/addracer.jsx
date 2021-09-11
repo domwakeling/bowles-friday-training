@@ -49,7 +49,7 @@ const AddRacerPage = () => {
           </p>
           {
             // eslint-disable-next-line react/no-array-index-key
-            user.racers.map((racer, idx) => <Racer key={idx} name={racer} status="normal" />)
+            user.racers.map((racer, idx) => <Racer key={idx} name={racer.name} status="normal" />)
           }
           <p>
             Do you want to
