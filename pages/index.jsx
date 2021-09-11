@@ -32,7 +32,7 @@ const IndexPage = () => {
         duration: 1,
       });
     } else if (res.status === 409) {
-      toast.notify(`That racer trained last Friday.In order to ensure all members get a chance to
+      toast.notify(`That racer trained last Friday. In order to ensure all members get a chance to
           train, please wait until Monday before booking them in to this Friday's session.`, {
         type: 'warn',
         title: 'Warning',
