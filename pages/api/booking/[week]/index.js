@@ -32,7 +32,7 @@ handler.post(async (req, res) => {
   // eslint-disable-next-line max-len
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
-  const maxRacers = forFriday === '21052021' ? 40 : 25;
+  const maxRacers = forFriday === '01102021' ? 40 : 25;
 
   // if no booking was found set one up; expire after 30 days (minmimse db size)
   if (!bookings) {
@@ -55,10 +55,17 @@ handler.post(async (req, res) => {
 
   // space and racer wasn't found
   if (racersCount < maxRacers && !racerFound) {
-    // check if it's weekend  ...
     const today = new Date();
     const weekday = today.getDay();
     const hour = today.getHours();
+    // check if its the fun race and they're not Bowles
+    if (forFriday === '01102021' && club !== 'Bowles') {
+        res.status(413);
+        res.send('Racer represents another club.');
+        res.end();
+        return;
+    }
+    // check if it's weekend  ...
     if (weekday === 0 || weekday === 6 || (weekday === 5 && hour > 17)) {
       // look for previous week's booking - ** NOT REQUIRED ANY MORE ON FRIDAYS
       // const prevWeek = await req.db.collection('bookings').findOne({

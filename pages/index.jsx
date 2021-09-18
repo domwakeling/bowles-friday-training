@@ -43,6 +43,12 @@ const IndexPage = () => {
         type: 'warn',
         title: 'Warning',
       });
+    } else if (res.status === 413) {
+      toast.notify(`That racer represents another club at races, unfortunatley they
+          cannot take part in this week's fun race.`, {
+        type: 'warn',
+        title: 'Warning',
+      });
     } else {
       toast.notify('No places available', {
         type: 'warn',
