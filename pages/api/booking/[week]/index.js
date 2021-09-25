@@ -60,10 +60,10 @@ handler.post(async (req, res) => {
     const hour = today.getHours();
     // check if its the fun race and they're not Bowles
     if (forFriday === '01102021' && club !== 'Bowles') {
-        res.status(413);
-        res.send('Racer represents another club.');
-        res.end();
-        return;
+      res.status(413);
+      res.send('Racer represents another club.');
+      res.end();
+      return;
     }
     // check if it's weekend  ...
     if (weekday === 0 || weekday === 6 || (weekday === 5 && hour > 17)) {

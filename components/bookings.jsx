@@ -40,7 +40,7 @@ const Bookings = () => {
 
   // const idxs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
   //   16, 17, 18, 19, 20, 21, 22, 23, 24];
-  const idxs = Array.from(Array(ds[0] === '21052021' ? 40 : 25).keys());
+  const idxs = Array.from(Array(ds[0] === '01102021' ? 40 : 25).keys());
   return (
     <div>
       <h2>
