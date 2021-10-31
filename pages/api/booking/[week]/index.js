@@ -32,6 +32,16 @@ handler.post(async (req, res) => {
     id, name, club,
   } = req.body;
 
+  if (!req.user || !req.user.email) {
+    // eslint-disable-next-line
+    console.log('new booking requested without user/email; rejecting');
+    res.send([]);
+    return;
+  }
+
+  // eslint-disable-next-line
+  console.log('new booking request from', req.user.email);
+
   const bookings = await req.db
     .collection('bookings')
     .findOne({
