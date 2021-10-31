@@ -7,8 +7,15 @@ handler.use(middleware);
 handler.get(async (req, res) => {
   const forFriday = req.query.week;
 
+  if (!req.user.email) {
+    // eslint-disable-next-line
+    console.log('booking info requested without email; rejecting');
+    res.send([]);
+    return;
+  }
+
   // eslint-disable-next-line
-  console.log('booking request info from', req.user.email, '---\n');
+  console.log('booking info request from', req.user.email);
 
   const bookings = await req.db
     .collection('bookings')
