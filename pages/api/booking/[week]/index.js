@@ -7,9 +7,9 @@ handler.use(middleware);
 handler.get(async (req, res) => {
   const forFriday = req.query.week;
 
-  if (!req.user.email) {
+  if (!req.user || !req.user.email) {
     // eslint-disable-next-line
-    console.log('booking info requested without email; rejecting');
+    console.log('booking info requested without user/email; rejecting');
     res.send([]);
     return;
   }
