@@ -7,6 +7,9 @@ handler.use(middleware);
 handler.get(async (req, res) => {
   const forFriday = req.query.week;
 
+  // eslint-disable-next-line
+  console.log('booking request info from', req.user.email, '---\n');
+
   const bookings = await req.db
     .collection('bookings')
     .findOne({
@@ -21,8 +24,6 @@ handler.post(async (req, res) => {
   const {
     id, name, club,
   } = req.body;
-
-  console.log('booking request info\n', req.body, '---\n');
 
   const bookings = await req.db
     .collection('bookings')
