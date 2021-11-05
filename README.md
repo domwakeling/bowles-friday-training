@@ -9,8 +9,10 @@ for on-screen notifications.
 Functionality:
 * email-based accounts with email resets
 * add racers to an account (no ability to edit/delete, requires db admin; racers are unique to
-a user but **not** unique objectrs)
+  a user but **not** unique objects)
 * add/remove racers from the present week's booking (always shows "this Friday", so booking for the
-week opens on Saturday morning)
+  week opens on Saturday morning)
 
 Live database hosted on MongoDB Atlas.
+
+NB: does not work with Node v17.x, use Node v16.x
