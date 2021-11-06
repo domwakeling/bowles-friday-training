@@ -19,3 +19,6 @@ yarn-error.log*
 
 # Annoying mac file
 .DS_Store
+
+# nvm settings
+.nvmrc
