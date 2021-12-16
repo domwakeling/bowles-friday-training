@@ -62,10 +62,10 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {ds[0] === '26032021' ? (
+      {(ds[0] === '24122021' || ds[0] === '31122021') ? (
         <div className="alert-text">
-          <p>The centre is currently shut in accordance with Covid restrictions.</p>
-          <p>Bookings for Friday 2 April will open at midnight on Fri/Sat 26/27 March</p>
+          <p>There is no race club from Friday 24th &amp; Friday 31st December (inclusive).</p>
+          <p>Training will resume in January!</p>
         </div>
       ) : (
         <>
