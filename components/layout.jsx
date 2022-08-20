@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
       <style jsx global>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-          @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap')
+          @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
           html {
             padding: env(safe-area-inset);
           }

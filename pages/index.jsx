@@ -89,6 +89,7 @@ const IndexPage = () => {
                       tabNum={idx}
                       name={racer.name}
                       status="normal"
+                      // eslint-disable-next-line react/jsx-no-bind
                       clickhandler={handleRacerClick}
                       userid={user._id}
                       club={racer.club}
