@@ -62,11 +62,10 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {ds[0] === '26082022' ? (
+      {ds[0] === '09092022' ? (
         <div className="alert-text">
           <p>
-            Unfortunately the slope is shut for maintenance until the end of August. The next
-            Friday training session will be 2nd September.
+            Unfortunately there will be no training session on Friday 9th September.
           </p>
         </div>
       ) : (
