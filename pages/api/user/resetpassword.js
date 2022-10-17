@@ -1,13 +1,10 @@
 import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import nextConnect from 'next-connect';
 import database from '../../../middlewares/database';
 
 const handler = nextConnect();
-const { OAuth2 } = google.auth;
-const myOAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET);
 
 handler.use(database);
 
@@ -26,36 +23,37 @@ handler.post(async (req, res) => {
     token,
     userId: user._id,
     type: 'passwordReset',
-    expireAt: new Date(Date.now() + 1000 * 60 * 20),
+    expireAt: new Date(Date.now() + 1000 * 60 * 60),
   });
-
-  myOAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-
-  const myAccessToken = myOAuth2Client.getAccessToken();
 
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       type: 'OAuth2',
       user: process.env.EMAIL_FROM,
+      pass: process.env.EMAIL_PW,
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       refreshToken: process.env.REFRESH_TOKEN,
-      accessToken: myAccessToken,
     },
   });
 
+  // eslint-disable-next-line no-unused-vars
   const info = await transport.sendMail({
     from: process.env.EMAIL_FROM,
     to: req.body.email,
     subject: 'Bowles Training - Reset your password',
-    text: `There has been a request to reset your password for the Bowles SRC training booking app.\n\n
-            Please go to ${process.env.WEB_URI}/forget-password/${token} to reset your password.\n\n
-            If you did not request a password reset, please contact Dom Wakeling.`,
+    text: `There has been a request to reset your password for the Bowles SRC training booking
+             app.\n\n
+             Please go to ${process.env.WEB_URI}/forget-password/${token} to reset your
+             password.\n\n
+             If you did not request a password reset, please contact Dom Wakeling.`,
     html: `
         <div>
-          <p>There has been a request to reset your password for the Bowles SRC training booking app.</p>
-          <p>Please follow <a href="${process.env.WEB_URI}/forget-password/${token}">this link</a> to reset your password.</p>
+          <p>There has been a request to reset your password for the Bowles SRC training booking
+             app.</p>
+          <p>Please follow <a href="${process.env.WEB_URI}/forget-password/${token}">this
+             link</a> to reset your password.</p>
           <p>If you did not request a password reset, please contact Dom Wakeling.</p>
         </div>
         `,
@@ -63,9 +61,6 @@ handler.post(async (req, res) => {
       user: process.env.EMAIL_FROM,
     },
   });
-
-  // eslint-disable-next-line no-console
-  console.log(info);
 
   res.end('ok');
 });
