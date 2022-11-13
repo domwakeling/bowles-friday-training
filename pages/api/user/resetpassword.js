@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import nextConnect from 'next-connect';
 import database from '../../../middlewares/database';
+import { htmlBody, textBody } from '../../../lib/email_html';
 
 const handler = nextConnect();
 
@@ -38,25 +39,15 @@ handler.post(async (req, res) => {
     },
   });
 
+  const plainBodyText = textBody(process.env.WEB_URI, token);
+  const htmlBodyText = htmlBody(process.env.WEB_URI, token);
   // eslint-disable-next-line no-unused-vars
   const info = await transport.sendMail({
     from: process.env.EMAIL_FROM,
     to: req.body.email,
     subject: 'Bowles Training - Reset your password',
-    text: `There has been a request to reset your password for the Bowles SRC training booking
-             app.\n\n
-             Please go to ${process.env.WEB_URI}/forget-password/${token} to reset your
-             password.\n\n
-             If you did not request a password reset, please contact Dom Wakeling.`,
-    html: `
-        <div>
-          <p>There has been a request to reset your password for the Bowles SRC training booking
-             app.</p>
-          <p>Please follow <a href="${process.env.WEB_URI}/forget-password/${token}">this
-             link</a> to reset your password.</p>
-          <p>If you did not request a password reset, please contact Dom Wakeling.</p>
-        </div>
-        `,
+    text: plainBodyText,
+    html: htmlBodyText,
     auth: {
       user: process.env.EMAIL_FROM,
     },
