@@ -62,10 +62,10 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {ds[0] === '09092022' ? (
+      {ds[0] === '15092023' ? (
         <div className="alert-text">
           <p>
-            Unfortunately there will be no training session on Friday 9th September.
+            Unfortunately there will be no training session on Friday 15th September.
           </p>
         </div>
       ) : (
