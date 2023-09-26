@@ -40,7 +40,7 @@ const Bookings = () => {
 
   // const idxs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
   //   16, 17, 18, 19, 20, 21, 22, 23, 24];
-  const idxs = Array.from(Array(ds[0] === '28042023' ? 50 : 25).keys());
+  const idxs = Array.from(Array(ds[0] === '06102023' ? 45 : 25).keys());
   return (
     <div>
       <h2>
@@ -48,11 +48,9 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {ds[0] === '18092020' ? (
+      {ds[0] === '06102023' ? (
         <p className="alert-text">
-          The club fun-race for 11s-&amp;-Under (anyone born between 2009-2014 inclusive)
-          is being held this Friday, 18 September. Please only book in for racers in those
-          age groups. If you wish to race but bookings are full, please contact Nigel.
+          The club fun-race is being held this Friday, 6 October.
         </p>
       ) : ''}
       {ds[0] === '25092020' ? (
