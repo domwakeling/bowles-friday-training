@@ -39,7 +39,7 @@ const Bookings = () => {
   }
 
   // also change in pages/api/booking/[week]/index.js
-  const idxs = Array.from(Array(ds[0] === '06102023' ? 45 : 25).keys());
+  const idxs = Array.from(Array(ds[0] === '19042024' ? 45 : 25).keys());
   return (
     <div>
       <h2>
@@ -47,9 +47,9 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {ds[0] === '06102023' ? (
+      {ds[0] === '19042024' ? (
         <p className="alert-text">
-          The club fun-race is being held this Friday, 6 October.
+          The club fun-race is being held this Friday, 19 April.
         </p>
       ) : ''}
       {ds[0] === '25092020' ? (
