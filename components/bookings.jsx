@@ -49,7 +49,7 @@ const Bookings = () => {
       </h2>
       {ds[0] === '11102024' ? (
         <p className="alert-text">
-          The club fun-race is being held this Friday, 19 April.
+          The club fun-race is being held this Friday, 11 October.
         </p>
       ) : ''}
       {ds[0] === '25092020' ? (
