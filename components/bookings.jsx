@@ -39,7 +39,7 @@ const Bookings = () => {
   }
 
   // also change in pages/api/booking/[week]/index.js
-  const idxs = Array.from(Array(ds[0] === '10102025' ? 45 : 25).keys());
+  const idxs = Array.from(Array(ds[0] === '14112025' ? 45 : 25).keys());
   return (
     <div>
       <h2>
@@ -47,9 +47,18 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
-      {ds[0] === '10102025' ? (
+      {ds[0] === '14112025' ? (
         <p className="alert-text">
-          The club fun-race is being held this Friday, 10 October.
+          This Friday the club is holding a slalom challenge to raise money for Children
+          In Need. You can find more info
+          {' '}
+          <a
+            target="just_giving"
+            href="https://www.justgiving.com/page/slalom-skiing-height-of-everest"
+          >
+            here
+          </a>
+          .
         </p>
       ) : ''}
       {ds[0] === '25092020' ? (
