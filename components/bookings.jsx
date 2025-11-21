@@ -68,12 +68,10 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {(ds[0] === '15082025' || ds[0] === '22082025') ? (
+      {(ds[0] === '28112025' || ds[0] === '22082025') ? (
         <div className="alert-text">
           <p>
-            The main slope at Bowles will be closed for maintenance from Monday 11th August to
-            Friday 22nd August. Therefore no Race Club on Tuesday 12th, Friday 15th, Tuesday 19th
-            and Friday 22nd.
+            There will be no Race Club on Friday 28th November.
           </p>
         </div>
       ) : (
