@@ -68,10 +68,10 @@ const Bookings = () => {
           age groups. If you wish to race but bookings are full, please contact Nigel.
         </p>
       ) : ''}
-      {(ds[0] === '28112025' || ds[0] === '22082025') ? (
+      {(ds[0] === '26122025' || ds[0] === '22082025') ? (
         <div className="alert-text">
           <p>
-            There will be no Race Club on Friday 28th November.
+            There will be no Race Club on Friday 26th December.
           </p>
         </div>
       ) : (
