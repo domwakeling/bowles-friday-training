@@ -44,7 +44,7 @@ const IndexPage = () => {
         title: 'Warning',
       });
     } else if (res.status === 413) {
-      toast.notify(`That racer represents another club at races, unfortunatley they
+      toast.notify(`That racer represents another club at races, unfortunately they
           cannot take part in this week's fun race.`, {
         type: 'warn',
         title: 'Warning',
