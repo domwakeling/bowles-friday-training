@@ -11,6 +11,7 @@ handler.get(async (req, res) => {
     // eslint-disable-next-line
     console.log('booking info requested without user/email; rejecting');
     res.send([]);
+    res.end();
     return;
   }
 
@@ -24,18 +25,20 @@ handler.get(async (req, res) => {
     });
 
   res.send(bookings ? bookings.racers : []);
+  res.end();
 });
 
 handler.post(async (req, res) => {
   const forFriday = req.query.week;
   const {
-    id, name, club,
+    id, name, club, prev,
   } = req.body;
 
   if (!req.user || !req.user.email) {
     // eslint-disable-next-line
     console.log('new booking requested without user/email; rejecting');
     res.send([]);
+    res.end();
     return;
   }
 
@@ -87,19 +90,19 @@ handler.post(async (req, res) => {
       return;
     }
     // check if it's weekend  ...
-    if (weekday === 0 || weekday === 6 || (weekday === 5 && hour > 17)) {
+    if (weekday <= 2 || weekday === 6 || (weekday === 5 && hour > 17)) {
       // look for previous week's booking - ** NOT REQUIRED ANY MORE ON FRIDAYS
-      // const prevWeek = await req.db.collection('bookings').findOne({
-      //   forWeek: prev,
-      // });
+      const prevWeek = await req.db.collection('bookings').findOne({
+        forWeek: prev,
+      });
       // check there is an entry and find out if this racer was booked in - ** NOT REQUIRED FRIDAYS
-      // if (prevWeek
-      //   && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
-      //   res.status(409);
-      //   res.send('Racer booked previous week.');
-      //   res.end();
-      //   return;
-      // }
+      if (prevWeek
+        && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
+        res.status(409);
+        res.send('Racer booked previous week.');
+        res.end();
+        return;
+      }
       // check what club
       if (club !== 'Bowles') {
         res.status(412);
