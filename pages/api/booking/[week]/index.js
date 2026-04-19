@@ -56,7 +56,7 @@ handler.post(async (req, res) => {
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
   // also change in components/bookings.jsx
-  const maxRacers = forFriday === '14112025' ? 45 : 25;
+  const maxRacers = forFriday === '24042026' ? 45 : 25;
 
   // if no booking was found set one up; expire after 30 days (minimise db size)
   if (!bookings) {

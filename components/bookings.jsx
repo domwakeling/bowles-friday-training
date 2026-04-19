@@ -39,7 +39,7 @@ const Bookings = () => {
   }
 
   // also change in pages/api/booking/[week]/index.js
-  const idxs = Array.from(Array(ds[0] === '14112025' ? 45 : 25).keys());
+  const idxs = Array.from(Array(ds[0] === '24042026' ? 45 : 25).keys());
   return (
     <div>
       <h2>
