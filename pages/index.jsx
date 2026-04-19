@@ -10,7 +10,7 @@ const IndexPage = () => {
   const [user] = useCurrentUser();
 
   async function handleRacerClick(id, name, club) {
-    const ds = getFriday()[0]; // gets the 8-digit datestring for this Friday
+    const ds = getFriday()[0]; // gets the 8-digit date string for this Friday
     const prev = getFriday()[2];
     const body = {
       id,

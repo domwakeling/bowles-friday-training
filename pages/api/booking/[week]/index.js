@@ -1,5 +1,6 @@
 import nextConnect from 'next-connect';
 import middleware from '../../../../middlewares/middleware';
+import { NEXT_RACE, RACE_MAX, FRI_MAX } from '../../../../lib/constants';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -55,8 +56,8 @@ handler.post(async (req, res) => {
   // eslint-disable-next-line max-len
   const racerFound = bookings ? bookings.racers.filter((racer) => (racer.userid === id && racer.name === name)).length > 0 : false;
 
-  // also change in components/bookings.jsx
-  const maxRacers = forFriday === '24042026' ? 45 : 25;
+  // change date (and limits if appropriate) in lib/constants
+  const maxRacers = forFriday === NEXT_RACE ? RACE_MAX : FRI_MAX;
 
   // if no booking was found set one up; expire after 30 days (minimise db size)
   if (!bookings) {
@@ -97,7 +98,9 @@ handler.post(async (req, res) => {
       });
       // check there is an entry and find out if this racer was booked in - ** NOT REQUIRED FRIDAYS
       if (prevWeek
-        && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0) {
+        && prevWeek.racers.filter((r) => r.userid === id && r.name === name).length > 0
+        && forFriday !== NEXT_RACE
+      ) {
         res.status(409);
         res.send('Racer booked previous week.');
         res.end();

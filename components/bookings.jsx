@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import { useCurrentUser } from '../lib/hooks';
 import Racer from './racer';
 import fetcher from '../lib/fetch';
+import { NEXT_RACE, RACE_MAX, FRI_MAX } from '../lib/constants';
 
 export const getFriday = () => {
   const date = new Date();
@@ -38,8 +39,8 @@ const Bookings = () => {
     );
   }
 
-  // also change in pages/api/booking/[week]/index.js
-  const idxs = Array.from(Array(ds[0] === '24042026' ? 45 : 25).keys());
+  // change date (and limits if appropriate) in lib/constants
+  const idxs = Array.from(Array(ds[0] === NEXT_RACE ? RACE_MAX : FRI_MAX).keys());
   return (
     <div>
       <h2>
