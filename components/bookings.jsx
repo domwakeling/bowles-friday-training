@@ -48,6 +48,12 @@ const Bookings = () => {
         {' '}
         {ds[1]}
       </h2>
+      <p className="alert-text">
+        From the start of December
+        {'\''}
+        26, training booking will be via ClubPal. Please continue to book here for sessions in
+        November.
+      </p>
       {ds[0] === '14112025' ? (
         <p className="alert-text">
           This Friday the club is holding a slalom challenge to raise money for Children
